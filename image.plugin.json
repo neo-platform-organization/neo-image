@@ -1,0 +1,1 @@
+{"format":"neo.plugin/1","id":"neo.image.exercise","version":1,"collection":"images","kind":"data","role":"image","requires":["neo.language"],"payload":"neo-os/image.neo","targets":{"x86_64/Windows":{},"x86_64/Linux":{},"x86_64/x86_64":{}}}
