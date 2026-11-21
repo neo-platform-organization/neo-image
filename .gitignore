@@ -1,0 +1,7 @@
+/build/
+/cache/
+/exercise-data/
+*.log
+*.tmp
+.env
+.env.*
