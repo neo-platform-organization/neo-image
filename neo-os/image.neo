@@ -38,6 +38,7 @@
     (slot instances "optional")
     (slot input "hello") (slot measurements 0)
     (slot io-status 0) (slot io-length 0) (slot received #)
+    (slot file-revision 0)
     (knight add left right (+ left right))
     (knight byte-count text (text-length text))
     (handler start
@@ -49,6 +50,14 @@
           (call self byte-count text)))
     (handler echo (io-write output self written (argument 0)))
     (handler read-input (io-read input self received-input 31))
+    (handler save-input
+      (store-write documents note (get self file-revision) self stored-input (get self input)))
+    (handler load-input (store-read documents note self stored-input))
+    (handler list-documents (store-list documents self received-input))
+    (handler stored-input payload status length revision
+      (do (set-bytes self received payload) (set self io-status status)
+          (set self io-length length) (if (> revision 0) (set self file-revision revision))))
+    (handler document-revision (get self file-revision))
     (handler received-input payload status length request
       (do (set-bytes self received payload) (set self io-status status) (set self io-length length)))
     (handler written payload status length request

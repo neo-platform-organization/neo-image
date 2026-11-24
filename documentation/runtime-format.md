@@ -1,10 +1,22 @@
 # Current image format
 
+The [v1 contract](language-v1.md) separates the tested baseline, resource limits,
+and requirements still needed before language completion. Quoted text now
+rejects malformed UTF-8; text-length/text-byte retain byte-based semantics.
+
 This guide describes the executable foundation snapshot. The whitepaper
 contains broader design proposals. Retired implicit-primitive syntax and
 metadata wrappers are not accepted by this VM.
 
 ## Warp
+
+The current native language interface is ABI 4. Value tokens now hold up to
+1023 serialized bytes independently of bounded names. Matching native components
+must be rebuilt for the larger result buffer/staging layout. Graph-facing managed stores use
+explicit package grants; see the
+[milestone checkpoint](../../neo/documentation/development/milestone-checkpoint.md)
+for store operations, checkpoint/resume, and image-library commands. These are
+implemented additions to the foundation subset, not a completed version-1 gate.
 
 Warp is a serialized graph with explicit objects and named members. A document
 starts with a version and an entry receiver/selector:
@@ -33,6 +45,18 @@ Slots belong to that receiver. A `package` declaration scopes resource grants;
 imports require explicit host authorization. Syntax alone cannot grant access.
 
 ## Handlers and Knight
+
+Text now supports text-concat, scalar-indexed text-slice, text-scalar-length and
+text-scalar-at. Text-returning Knight functions compose through call-text.
+See the [text contract](language-v1.md#constructing-and-inspecting-text) for
+evaluation order, capacity errors and Unicode scalar versus byte semantics.
+
+Bytes support `bytes(...)`, `bytes-concat` and byte-indexed `bytes-slice`.
+Integer vectors support `vector(...)`, `vector-concat` and element-indexed
+`vector-slice`. In Warp, constructors use ordinary forms such as `(bytes 0 255)`
+and `(vector 1 2 3)`. Pure byte results compose through `call-bytes`; pure vector
+results use `call-vector`. See the [value contract](language-v1.md#execution-and-pure-calls)
+for bounds, failure, serialization and ownership rules.
 
 `send` invokes object behavior. `call` invokes pure Knight calculations. Both
 use positional arguments, currently at most four. Knight cannot write slots,
