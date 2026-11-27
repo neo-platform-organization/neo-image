@@ -14,7 +14,7 @@ The current native language interface is ABI 4. Value tokens now hold up to
 1023 serialized bytes independently of bounded names. Matching native components
 must be rebuilt for the larger result buffer/staging layout. Graph-facing managed stores use
 explicit package grants; see the
-[milestone checkpoint](../../neo/documentation/development/milestone-checkpoint.md)
+[milestone checkpoint](../../neo-vm/documentation/development/milestone-checkpoint.md)
 for store operations, checkpoint/resume, and image-library commands. These are
 implemented additions to the foundation subset, not a completed version-1 gate.
 
@@ -124,7 +124,7 @@ rejects graph publication. A durable write must use a separate send from
 framebuffer, scheduling, or object lifecycle effects. General graph-facing
 asynchronous storage and networking remain unfinished.
 
-See [the lifecycle exercise](../../neo/documentation/development/image-exercise.md)
+See [the lifecycle exercise](../../neo-vm/documentation/development/image-exercise.md)
 for executable commands, controls, and failure tests.
 
 ## Live sessions and snapshots
@@ -160,4 +160,4 @@ An explicitly packaged object may declare the ordinary text slot
 `presentation` metadata accepts internal (the default), host, or headless.
 `instances` accepts single (the default) or optional. These slots describe
 launch intent; they grant no authority and do not instantiate an application.
-See [the current milestones](../../neo/documentation/development/launch-milestones.md).
+See [the current milestones](../../neo-vm/documentation/development/launch-milestones.md).

@@ -286,13 +286,13 @@ editing need concrete designs during F2-F4; they are not accepted syntax today.
 
 ## Evidence and reading order
 
-The independent [conformance suite](../../neo/tools/conformance.mjs) checks the
+The independent [conformance suite](../../neo-vm/tools/conformance.mjs) checks the
 implemented baseline through the public CLI. It does not import compiler
 internals or the older regression fixtures. Its passing banner explicitly leaves
 the full v1 gate open. Existing regressions add package, lifecycle, scheduling,
 reflection and platform integration evidence.
 
-Use [foundation milestones](../../neo/documentation/development/foundation-milestones.md)
+Use [foundation milestones](../../neo-vm/documentation/development/foundation-milestones.md)
 for the implementation order and [current format](runtime-format.md) for syntax.
 The source of truth for current constraints is the checked-in implementation:
 `neo-vm/jit.h`, `neo-vm/language/jit.c`, `literal.h` and `weft.c` in the VM repo.
