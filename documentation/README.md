@@ -1,5 +1,7 @@
 # neo language and image
 
+- [Coined terms](coined/README.md): interpretive neutrality and generative coherence.
+
 - [Language v1 contract](language-v1.md): implemented semantics, current limits,
   and unfinished requirements, with independent acceptance evidence.
 
